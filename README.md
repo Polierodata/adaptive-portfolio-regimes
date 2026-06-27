@@ -6,7 +6,7 @@ The project reproduces the full workflow from raw price data to market regime id
 
 ## Repository Structure
 
-thesis_replication/
+adaptive-portfolio-regimes/
 
 * FDATA.xlsx
 * FINAL_THESIS.ipynb
