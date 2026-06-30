@@ -72,6 +72,26 @@ The notebook is designed to run from a clean kernel using:
 
 Restart Kernel -> Run All Cells
 
+## Command-Line Execution
+
+On macOS/Linux systems where make is available, the master notebook can be executed from the command line using:
+
+make clean
+
+make run-master
+
+On Windows PowerShell, if make is not available, the equivalent commands are:
+
+Remove-Item -Recurse -Force output -ErrorAction SilentlyContinue
+
+New-Item -ItemType Directory -Force -Path output
+
+python -m jupyter nbconvert --to notebook --execute FINAL_THESIS.ipynb --inplace
+
+These Windows PowerShell commands perform the same practical steps: they remove previous generated outputs, recreate the output/ folder, and execute the master notebook from the command line.
+
+On Windows, a RuntimeWarning related to the Proactor event loop may appear during notebook execution. This warning does not indicate failure if nbconvert completes and writes the executed notebook successfully.
+
 A successful run should complete the final section:
 
 Final Outputs and Reproducibility Checks
