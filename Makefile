@@ -1,11 +1,18 @@
-.PHONY: install clean run-master
+.PHONY: venv install clean run-master reproduce
 
-install:
-	python -m pip install -r requirements.txt
+PYTHON := ./venv/bin/python
+
+venv:
+	python3 -m venv venv
+
+install: venv
+	$(PYTHON) -m pip install --upgrade pip
+	$(PYTHON) -m pip install -r requirements.txt
 
 clean:
 	rm -rf output
-	mkdir -p output
 
 run-master:
-	python -m jupyter nbconvert --to notebook --execute FINAL_THESIS.ipynb --inplace
+	$(PYTHON) -m jupyter nbconvert --to notebook --execute FINAL_THESIS.ipynb --inplace
+
+reproduce: clean run-master
